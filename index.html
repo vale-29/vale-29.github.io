@@ -1,253 +1,87 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>My CV Resume</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body, h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-row-padding img {margin-bottom: 12px}
-.bgimg {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url('images/site.jpg');
-  min-height: 100%;
-}
-.w3-round {
-  border-radius: 15px;
-}
-.w3-circle {
-  border-radius: 50%;
-  overflow: hidden;
-}
-h1 { 
-    font-family: 'Julius Sans One', sans-serif;
-}
-
-h2 { /* Contact, Skills, Education, About me, Work Experience */
-  font-family: 'Archivo Narrow', sans-serif;
-}
-/* Colore teal più chiaro */
-.w3-teal-custom {
-      background-color: #598b6c !important; /* Colore teal più chiaro */
-      color: white;
-  }
-  /* Effetto hover viola scuro */
-  .w3-teal-custom:hover {
-      background-color: #017214 !important; /* Viola scuro */
-      color: white;
-  }
-  /* Aggiungi queste nuove classi per il parallax */
-  .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4 {
-      position: relative;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      background-size: cover; /* Adatta l'immagine a coprire il div */
-      background-position: center; /* Centra l'immagine nel div */
-      height: 28vh; /* Imposta l'altezza a 20% dell'altezza della finestra */
-      width: 100%; /* Imposta la larghezza al 100% */
-    }
-
-    .bgimg-1 {
-      background-image: url('images/parallax_1.jpeg');
-    }
-    .bgimg-2 {
-      background-image: url('images/parallax_2.png');
-    }
-    .bgimg-3 {
-      background-image: url('images/parallax_3.png');
-    }
-    .bgimg-4 {
-      background-image: url('images/parallax_4.jpeg');
-    }
-    .dark-mode {
-      background-color: black;
-      color: white;
-    }
-
-    .toggle-button {
-      position: absolute;
-      font-size: 28px;
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-      color:  darkgray;
-    }
-    .fa-sun-o {
-      color: #ffd000be; /* Colore bianco per l'icona della luna */
-    }
-    .fa-moon-o {
-      color: #a5a44d; /* Colore bianco per l'icona della luna */
-    }
-    .footer {
-        background-color: #f1f1f1; /* w3-light-grey */
-        padding: 10px;
-        text-align: center;
-    }
-    .dark-mode .footer {
-        background-color: #000; /* Nero per il footer in modalità scura */
-    }
-    .dark-mode .w3-card-4 {
-        background-color: #000000; /* Colore scuro per le carte */
-        color: #646464; /* Testo bianco per il contrasto */
-        border: 1px solid #444; /* Bordo per definire meglio la carta */
-    }
-    .icon-teal {
-      color: teal; /* Colore teal per l'icona */
-    }
-    .dark-mode .w3-text-grey {
-        color: #f1f1f1 !important; /* Testo bianco per il contrasto, usando !important */
-    }
-
-    .dark-mode .bgimg-1, 
-    .dark-mode .bgimg-2, 
-    .dark-mode .bgimg-3,
-    .dark-mode .bgimg-4 {
-      filter: invert(1) sepia(1) saturate(10%) hue-rotate(180deg) brightness(1.0) contrast(1); /* Inverti i colori mantenendo il bianco normale */
-    }
-    .w3-sidebar {
-      width: 60%; /* Imposta la larghezza predefinita */
-      font-size: 18px; /* Dimensione del testo predefinita */
-    }
-    @media screen and (max-width: 768px) {
-      .w3-sidebar {
-        width: 100%; /* Su schermi più piccoli, il menu occupa tutta la larghezza */
-        font-size: 16px; /* Riduci un po' la dimensione del testo per smartphone */
-      }
-    }
-    .no-scroll {
-      overflow: hidden; /* Blocca lo scroll */
-      position: fixed; /* Fissa il contenuto */
-      width: 100%; /* Evita scroll orizzontale */
-      height: 100%; /* Assicura il blocco verticale */
-    }
-</style>
+  <title>My CV Resume</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
+
 <body>
-  <script>
-    // Funzione per aggiornare l'opacità in base allo scroll
-function updateOpacity() {
-  const images = document.querySelectorAll('.bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4');
 
-  // Calcola l'opacità in base alla posizione di scroll per ogni immagine
-  images.forEach(image => {
-    const rect = image.getBoundingClientRect();
-    const imageTop = rect.top + window.scrollY;
-    const imageBottom = imageTop + image.offsetHeight;
-    const opacity = Math.min(1, Math.max(0, (imageBottom - window.scrollY) / window.innerHeight));
-    image.style.opacity = opacity;
-  });
-}
+  <!-- Hidden Sidebar (reveals when clicked on menu icon)-->
+  <nav class="w3-sidebar w3-black w3-animate-right w3-xxlarge" id="mySidebar">
+    <a href="javascript:void(0)" onclick="closeNav()" class="w3-button w3-black w3-xxlarge w3-display-topright"
+      style="padding:0 12px;">
+      <i class="fa fa-remove"></i>
+    </a>
+    <div class="w3-bar-block w3-center">
+      <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Home</a>
+      <a href="#about" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">About</a>
+      <a href="#skills" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Skills</a>
+      <a href="#work_experience" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Work
+        Experience</a>
+      <a href="#certifications" class="w3-bar-item w3-button w3-text-grey w3-hover-black"
+        onclick="closeNav()">Certifications</a>
+      <a href="#publications" class="w3-bar-item w3-button w3-text-grey w3-hover-black"
+        onclick="closeNav()">Publications</a>
+      <a href="#education" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Education</a>
+      <a href="#contact" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Contact</a>
+    </div>
+  </nav>
 
-// Aggiungi un evento listener per lo scroll
-window.addEventListener('scroll', updateOpacity);
-  </script>
-  
-
-<!-- Sidebar with image -->
-<nav class="w3-sidebar w3-hide-medium w3-hide-small" style="width:40%">
-  <div class="bgimg"></div>
-</nav>
-
-<!-- Hidden Sidebar (reveals when clicked on menu icon)-->
-<nav class="w3-sidebar w3-black w3-animate-right w3-xxlarge" style="display:none;padding-top:150px;right:0;z-index:2" id="mySidebar">
-  <a href="javascript:void(0)" onclick="closeNav()" class="w3-button w3-black w3-xxlarge w3-display-topright" style="padding:0 12px;">
-    <i class="fa fa-remove"></i>
-  </a>
-  <div class="w3-bar-block w3-center">
-    <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Home</a>
-    <a href="#about" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">About</a>
-    <a href="#skills" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Skills</a>
-    <a href="#work_experience" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Work Experience</a>
-    <a href="#certifications" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Certifications</a>
-    <a href="#publications" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Publications</a>
-    <a href="#education" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Education</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Contact</a>
-  </div>
-</nav>
-
-<!-- Page Content -->
-<div class="w3-main w3-padding-large" style="margin-left:40%">
-
-  <button class="toggle-button w3-center" onclick="toggleDarkMode()">
+  <span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black"
+    style="width:auto;left:0;background-color: transparent !important" onclick="toggleDarkMode()">
     <i class="fa fa-moon-o"></i>
-</button>
-
-<script>
-    // Apply dark mode by default
-    document.body.classList.add("dark-mode");
-
-    function toggleDarkMode() {
-        var element = document.body;
-        element.classList.toggle("dark-mode");
-
-        var icon = document.querySelector('.toggle-button i');
-        if (element.classList.contains('dark-mode')) {
-            icon.classList.remove('fa-sun-o');
-            icon.classList.add('fa-moon-o');
-        } else {
-            icon.classList.remove('fa-moon-o');
-            icon.classList.add('fa-sun-o');
-        }
-    }
-</script>
+  </span>
 
   <!-- Menu icon to open sidebar -->
-  <span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto;right:0;background-color: transparent !important" onclick="openNav()"><i class="fa fa-bars"></i></span>
+  <span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black"
+    style="width:auto;right:0;background-color: transparent !important" onclick="openNav()">
+    <i class="fa fa-bars"></i>
+  </span>
 
-  <!-- Header -->
-  <header class="w3-container w3-center" style="padding:80px 16px" id="home">
-    <p class="w3-text-grey" id="typewriter" style="font-family: 'Courier New', Courier, monospace; font-size: 1.5em;"></p>
-    <h1 class="w3-jumbo"><b>Valerio Serino</b></h1>
-    <p>Computer Engineer</p>
-    <img src="/images/site.jpg" class="w3-image w3-hide-large w3-hide-small w3-round" style="display:block;width:60%;margin:auto;">
-    <img src="/images/site.jpg" class="w3-image w3-hide-large w3-hide-medium w3-round" width="1000" height="1333">
-    <button class="w3-button w3-teal w3-padding-large w3-margin-top w3-round-large" onclick="downloadCV()">
-        <i class="fa fa-download downloadIcon"></i> Download CV Resume
-    </button>
-  </header>
+  <!-- Bit effect always on in background -->
+  <div class="particles-container" id="particles-container"></div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Testo da scrivere
-      var text = "$ echo \"Hello World!\"";
-      var i = 0;
-      
-      function typeWriter() {
-        if (i < text.length) {
-          document.getElementById("typewriter").innerHTML += text.charAt(i);
-          i++;
-          setTimeout(typeWriter, 100); // Ritardo tra i caratteri (in millisecondi)
-        }
-      }
+  <!-- Page Content -->
+  <div class="w3-main w3-padding-large">
+    <!-- Home Section -->
+    <div id="home" class="w3-content w3-center w3-padding-32">
+      <!-- Contenitore per l'immagine e il testo -->
+      <div class="content-wrapper w3-center">
+        <img src="images/site.jpg" alt="Profile image" class="profile-img">
+        <div class="linux-prompt">
+          <p id="typedText">|<span class="cursor">▋</span></p>
+        </div>
+      </div>
+      <!-- Contenitore per il cubo -->
+      <div id="cubeContainer" class="w3-padding-large"></div>
+      <!-- Contenitore per il bottone -->
+      <div id="btnContainer" class="w3-center">
+        <button class="w3-button w3-teal w3-padding-large w3-round-large w3-center w3-hover-white"
+          onclick="downloadCV()">
+          <i class="fa fa-download downloadIcon"></i> Download CV Resume
+        </button>
+      </div>
+    </div>
 
-      // Avvia l'effetto di scrittura
-      typeWriter();
-    });
-  </script>
-
-<script>
-    function downloadCV() {
-    const link = document.createElement('a'); // Create a new anchor element
-    link.href = 'my_cv_resume.pdf'; // Replace with the correct file path
-    link.download = 'valerio_serino_cv_resume.pdf'; // Specify the file name for the download
-    link.click(); // Trigger the click event to start the download
-}
-</script>
-
-  <!-- Parallax Section -->
-  <div class="bgimg-1 w3-display-container w3-opacity-min">
-  </div>
+    <!-- Parallax Section -->
+    <div class="bgimg-1 w3-display-container w3-opacity-min">
+    </div>
 
     <!-- About Section -->
     <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="about">
       <h2 class="w3-text-grey w3-animate-left">About</h2>
       <hr class="w3-opacity">
-      <p>I love computer science in all its forms, with particular interest in AI, Cybersecurity, Telecommunication Networks and Remote Sensing. As a nature enthusiast and passionate advocate for environmental sustainability, I adhere to best practices of green coding.
+      <p>I love computer science in all its forms, with particular interest in AI, Cybersecurity, Telecommunication
+        Networks and Remote Sensing. As a nature enthusiast and passionate advocate for environmental sustainability, I
+        adhere to best practices of green coding.
       </p>
     </div>
 
@@ -255,390 +89,371 @@ window.addEventListener('scroll', updateOpacity);
     <div class="bgimg-1 w3-display-container w3-opacity-min">
     </div>
 
-      <!-- Skills Section -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="skills">
-    <h2 class="w3-text-grey w3-animate-left">Skills</h2>
-    <hr class="w3-opacity">
-    <div class="w3-row-padding">
-        <div class="w3-third w3-padding-small">
-            <div class="w3-card-4 w3-round w3-padding">
-                <h3 class="w3-text-teal w3-large">Programming Languages</h3>
-                <p class="w3-medium w3-text-grey">Java</p>
-                <p class="w3-medium w3-text-grey">Shell Scripting</p>
-                <p class="w3-medium w3-text-grey">Python</p>
-                <p class="w3-medium w3-text-grey">Web Languages</p>
-                <p class="w3-medium w3-text-grey">C</p>
-                <p class="w3-medium w3-text-grey">Matlab</p>
-            </div>
-        </div>
-        <div class="w3-third w3-padding-small">
-            <div class="w3-card-4 w3-round w3-padding">
-                <h3 class="w3-text-teal w3-large">Technologies</h3>
-                <p class="w3-medium w3-text-grey">Docker</p>
-                <p class="w3-medium w3-text-grey">OpenShift</p>
-                <p class="w3-medium w3-text-grey">Oracle SQL</p>
-                <p class="w3-medium w3-text-grey">Operating Systems</p>
-                <p class="w3-medium w3-text-grey">Artificial Vision</p>
-                <p class="w3-medium w3-text-grey">LLM</p>
-                <p class="w3-medium w3-text-grey">Git</p>
-                <p class="w3-medium w3-text-grey">Jenkins</p>
-                <p class="w3-medium w3-text-grey">Earth Observation</p>
-                <p class="w3-medium w3-text-grey">Reverse Engineering</p>
-                <p class="w3-medium w3-text-grey">WebLogic</p>
-            </div>
-        </div>
-        <div class="w3-third w3-padding-small">
-            <div class="w3-card-4 w3-round w3-padding">
-                <h3 class="w3-text-teal w3-large">Soft Skills</h3>
-                <p class="w3-medium w3-text-grey">Teamwork</p>
-                <p class="w3-medium w3-text-grey">Empathy</p>
-                <p class="w3-medium w3-text-grey">Problem Solving</p>
-                <p class="w3-medium w3-text-grey">Deadline Compliance</p>
-            </div>
-        </div>
-    </div>
-  </div>
-
-  <!-- Parallax Section -->
-  <div class="bgimg-2 w3-display-container w3-opacity-min">
-  </div>
-
-      <!-- Work Experience -->
-      <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="work_experience">
-          <h2 class="w3-text-grey w3-animate-left">Work Experience</h2>
-          <hr class="w3-opacity">
-          <!-- img src="/images/logo.jpg" alt="logo" class="w3-left w3-circle w3-margin-right" style="width:80px" -->
-          <p><span class="w3-large w3-text-grey w3-margin-right">IT Consultant</span></p>
-          <p>Sytel Reply Rome, activities:</p>
-          <div class="w3-padding-small">
-            <div class="w3-card-4 w3-round w3-padding w3-margin-bottom" style="position: relative;">
-              <!-- div class="w3-circle w3-display-container" style="background-color: rgb(254, 255, 175); width: 60px; height: 60px; position: absolute; top: -30px; right: -30px; box-shadow: 0px 0px 10px rgba(0,0,0,0.3);">
-                <img src="/images/logo.png" alt="logo" style="width: 100%; height: 100%; border-radius: 50%;">
-              </div -->
-              <h4 class="w3-text-teal">Customer: Poste Italiane</h4>
-              <p class="w3-text-grey"><i>Jan 2024 - Current</i></p>
-              <p class="w3-text-grey">Analysis, development and vulnerability assessment of business process impacts.</p>
-              <p class="w3-text-grey"><strong>Skills:</strong> Java, WebLogic, Oracle SQL</p>
-            </div>
-          </div>
-          <div class="w3-padding-small">
-            <div class="w3-card-4 w3-round w3-padding w3-margin-bottom" style="position: relative;">
-              <h4 class="w3-text-teal">Internal activities</h4>
-              <p class="w3-text-grey"><i>Jan 2023 - Current</i></p>
-              <ul class="w3-text-grey">
-                <li><p>Research and development of custom queryable knowledge bases, accessible offline and locally.</p>
-                <p><strong>Skills:</strong> LangChain, LangGraph, RAG</p></li>
-                <li><p>Creation of a GUI to automate development processes, integrating an LLM as an end-user support tool.</p>
-                <p><strong>Skills:</strong> Python, LLM, REST</p></li>
-              </ul>
-            </div>
-          </div>
-          <div class="w3-padding-small">
-            <div class="w3-card-4 w3-round w3-padding w3-margin-bottom" style="position: relative;">
-              <!-- div class="w3-circle w3-display-container" style="background-color: rgb(14, 110, 255); width: 60px; height: 60px; position: absolute; top: -30px; right: -30px; box-shadow: 0px 0px 10px rgba(0,0,0,0.3);">
-                <img src="/images/logo.png" alt="logo" style="width: 100%; height: 100%; border-radius: 50%;">
-              </div -->
-              <h4 class="w3-text-teal">Customer: Telecom</h4>
-              <p class="w3-text-grey"><i>May 2021 - Current</i></p>
-              <ul class="w3-text-grey">
-                  <li>
-                  <p>
-                      Analysis and development of critical remediation actions on production DBs and application servers.
-                  </p>
-                  <p>
-                    <strong>Skills:</strong> Oracle SQL, HP-UX, Apache Reverse Proxy
-                  </p>
-                  </li>
-                  <li>
-                  <p>
-                      Implementation of service migration from JMS queues to Kafka.
-                  </p>
-                  <p>
-                    <strong>Skills:</strong> JMS, Docker,Apache Kafka
-                  </p>
-                  </li>
-                  <li>
-                  <p>
-                      Development of a data collection process and creation of related dashboards on Kibana.
-                  </p>
-                  <p>
-                    <strong>Skills:</strong> ELK stack, Korn shell, Solaris
-                  </p>
-                  </li>
-                  <li>
-                  <p>
-                      Development of SW adapters to old processes with related vulnerability analysis.
-                  </p>
-                  <p>
-                    <strong>Skills:</strong> WebLogic, EJB, MDB
-                  </p>
-                  </li>
-                  <li>
-                  <p>
-                      SW security returns on a client/server system.
-                  </p>
-                  <p>
-                    <strong>Skills:</strong> Java RMI, Oracle SQL, TLS 1.2, Digital Certificates, Encryption
-                  </p>
-                  </li>
-                  <li>
-                  <p>
-                      Microservices development.
-                  </p>
-                  <p>
-                    <strong>Skills:</strong> Jenkins, Docker, OpenShift
-                  </p>
-                  </li>
-              </ul>
-          </div>
-        </div>
-
-  <!-- Parallax Section -->
-  <div class="bgimg-3 w3-display-container w3-opacity-min">
-  </div>
-    
-  <!-- Certifications Section -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="certifications">
-    <h2 class="w3-text-grey w3-animate-left">Certifications</h2>
-    <hr class="w3-opacity">
-    <div>
-      <span>
-        Cloud Academy, Inc.:
-      </span>
-      <ul>
-        <li>
-          <a>
-            <span>
-            Typescript: Zero to Hero
-            </span>
-          </a>
-        </li>
-        <li>
-          <a>
-            <span>
-            Docker Certified Associate (DCA) Exam Preparation
-            </span>
-          </a>
-        </li>
-        <li>
-          <a>
-            <span>
-              Becoming a Cloud Architect - Learn the Fundamentals
-            </span>
-          </a>
-        </li>
-        <li>
-          <a>
-            <span>
-            Cyber Primer
-            </span>
-          </a>
-        </li>
-        <li>
-          <a>
-            <span>
-            Machine Learning on Google Cloud Platform
-            </span>
-          </a>
-        </li>
-      </ul> 
-    </div>
-  </div>
-
-  <!-- Parallax Section -->
-  <div class="bgimg-3 w3-display-container w3-opacity-min">
-  </div>
-
-      <!-- Publications Section -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="publications">
-      <h2 class="w3-text-grey w3-animate-left">Publications</h2>
+    <!-- Skills Section -->
+    <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="skills">
+      <h2 class="w3-text-grey w3-animate-left">Skills</h2>
       <hr class="w3-opacity">
-      <p>Sensing multi-agent system for anomaly detection on crop fields exploiting the phenological and historical context.</p>
-      <div style="font-size: 12px;">
-        <p>2021 International Conference on Emerging Techniques in Computational Intelligence (ICETCI), IEEE · 27 ott 2021</p>
+      <div class="w3-row-padding">
+        <div class="w3-third w3-padding-small">
+          <div class="w3-card-4 w3-round w3-padding">
+            <h3 class="w3-text-teal w3-large">Programming Languages</h3>
+            <p class="w3-medium w3-text-grey">Java</p>
+            <p class="w3-medium w3-text-grey">Shell Scripting</p>
+            <p class="w3-medium w3-text-grey">Python</p>
+            <p class="w3-medium w3-text-grey">Web Languages</p>
+            <p class="w3-medium w3-text-grey">C</p>
+            <p class="w3-medium w3-text-grey">Matlab</p>
+          </div>
+        </div>
+        <div class="w3-third w3-padding-small">
+          <div class="w3-card-4 w3-round w3-padding">
+            <h3 class="w3-text-teal w3-large">Technologies</h3>
+            <p class="w3-medium w3-text-grey">Docker</p>
+            <p class="w3-medium w3-text-grey">OpenShift</p>
+            <p class="w3-medium w3-text-grey">Oracle SQL</p>
+            <p class="w3-medium w3-text-grey">Operating Systems</p>
+            <p class="w3-medium w3-text-grey">Artificial Vision</p>
+            <p class="w3-medium w3-text-grey">LLM</p>
+            <p class="w3-medium w3-text-grey">Git</p>
+            <p class="w3-medium w3-text-grey">Jenkins</p>
+            <p class="w3-medium w3-text-grey">Earth Observation</p>
+            <p class="w3-medium w3-text-grey">Reverse Engineering</p>
+            <p class="w3-medium w3-text-grey">WebLogic</p>
+          </div>
+        </div>
+        <div class="w3-third w3-padding-small">
+          <div class="w3-card-4 w3-round w3-padding">
+            <h3 class="w3-text-teal w3-large">Soft Skills</h3>
+            <p class="w3-medium w3-text-grey">Teamwork</p>
+            <p class="w3-medium w3-text-grey">Empathy</p>
+            <p class="w3-medium w3-text-grey">Problem Solving</p>
+            <p class="w3-medium w3-text-grey">Deadline Compliance</p>
+          </div>
+        </div>
       </div>
-      <a href="https://ieeexplore.ieee.org/document/9574046" class="w3-button w3-teal w3-round-large">View Publication</a>
     </div>
 
     <!-- Parallax Section -->
-  <div class="bgimg-4 w3-display-container w3-opacity-min">
-  </div>
+    <div class="bgimg-2 w3-display-container w3-opacity-min">
+    </div>
+
+    <!-- Work Experience -->
+    <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="work_experience">
+      <h2 class="w3-text-grey w3-animate-left">Work Experience</h2>
+      <hr class="w3-opacity">
+      <!-- img src="/images/logo.jpg" alt="logo" class="w3-left w3-circle w3-margin-right" style="width:80px" -->
+      <p><span class="w3-large w3-text-grey w3-margin-right">Senior IT Consultant</span></p>
+      <p>Sytel Reply Rome, activities:</p>
+      <div class="w3-padding-small">
+        <div class="w3-card-4 w3-round w3-padding w3-margin-bottom" style="position: relative;">
+          <!-- div class="w3-circle w3-display-container" style="background-color: rgb(254, 255, 175); width: 60px; height: 60px; position: absolute; top: -30px; right: -30px; box-shadow: 0px 0px 10px rgba(0,0,0,0.3);">
+                <img src="/images/logo.png" alt="logo" style="width: 100%; height: 100%; border-radius: 50%;">
+              </div -->
+          <h4 class="w3-text-teal">Customer: Poste Italiane</h4>
+          <p class="w3-text-grey"><i>Jan 2024 - Current</i></p>
+          <p class="w3-text-grey">Analysis, development and vulnerability assessment of business process impacts.</p>
+          <p class="w3-text-grey"><strong>Skills:</strong> Java, WebLogic, Oracle SQL</p>
+        </div>
+      </div>
+      <div class="w3-padding-small">
+        <div class="w3-card-4 w3-round w3-padding w3-margin-bottom" style="position: relative;">
+          <h4 class="w3-text-teal">Internal activities</h4>
+          <p class="w3-text-grey"><i>Jan 2023 - Current</i></p>
+          <ul class="w3-text-grey">
+            <li>
+              <p>Research and development of custom queryable knowledge bases, accessible offline and locally.</p>
+              <p><strong>Skills:</strong> LangChain, LangGraph, RAG</p>
+            </li>
+            <li>
+              <p>Creation of a GUI to automate development processes, integrating an LLM as an end-user support tool.
+              </p>
+              <p><strong>Skills:</strong> Python, LLM, REST</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="w3-padding-small">
+        <div class="w3-card-4 w3-round w3-padding w3-margin-bottom" style="position: relative;">
+          <!-- div class="w3-circle w3-display-container" style="background-color: rgb(14, 110, 255); width: 60px; height: 60px; position: absolute; top: -30px; right: -30px; box-shadow: 0px 0px 10px rgba(0,0,0,0.3);">
+                <img src="/images/logo.png" alt="logo" style="width: 100%; height: 100%; border-radius: 50%;">
+              </div -->
+          <h4 class="w3-text-teal">Customer: Telecom</h4>
+          <p class="w3-text-grey"><i>May 2021 - Current</i></p>
+          <ul class="w3-text-grey">
+            <li>
+              <p>
+                Analysis and development of critical remediation actions on production DBs and application servers.
+              </p>
+              <p>
+                <strong>Skills:</strong> Oracle SQL, HP-UX, Apache Reverse Proxy
+              </p>
+            </li>
+            <li>
+              <p>
+                Implementation of service migration from JMS queues to Kafka.
+              </p>
+              <p>
+                <strong>Skills:</strong> JMS, Docker,Apache Kafka
+              </p>
+            </li>
+            <li>
+              <p>
+                Development of a data collection process and creation of related dashboards on Kibana.
+              </p>
+              <p>
+                <strong>Skills:</strong> ELK stack, Korn shell, Solaris
+              </p>
+            </li>
+            <li>
+              <p>
+                Development of SW adapters to old processes with related vulnerability analysis.
+              </p>
+              <p>
+                <strong>Skills:</strong> WebLogic, EJB, MDB
+              </p>
+            </li>
+            <li>
+              <p>
+                SW security returns on a client/server system.
+              </p>
+              <p>
+                <strong>Skills:</strong> Java RMI, Oracle SQL, TLS 1.2, Digital Certificates, Encryption
+              </p>
+            </li>
+            <li>
+              <p>
+                Microservices development.
+              </p>
+              <p>
+                <strong>Skills:</strong> Jenkins, Docker, OpenShift
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Parallax Section -->
+      <div class="bgimg-3 w3-display-container w3-opacity-min">
+      </div>
+
+      <!-- Certifications Section -->
+      <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="certifications">
+        <h2 class="w3-text-grey w3-animate-left">Certifications</h2>
+        <hr class="w3-opacity">
+        <div>
+          <span>
+            Cloud Academy, Inc.:
+          </span>
+          <ul>
+            <li>
+              <a>
+                <span>
+                  Typescript: Zero to Hero
+                </span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span>
+                  Docker Certified Associate (DCA) Exam Preparation
+                </span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span>
+                  Becoming a Cloud Architect - Learn the Fundamentals
+                </span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span>
+                  Cyber Primer
+                </span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span>
+                  Machine Learning on Google Cloud Platform
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Parallax Section -->
+      <div class="bgimg-3 w3-display-container w3-opacity-min">
+      </div>
+
+      <!-- Publications Section -->
+      <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="publications">
+        <h2 class="w3-text-grey w3-animate-left">Publications</h2>
+        <hr class="w3-opacity">
+        <p>Sensing multi-agent system for anomaly detection on crop fields exploiting the phenological and historical
+          context.</p>
+        <div style="font-size: 12px;">
+          <p>2021 International Conference on Emerging Techniques in Computational Intelligence (ICETCI), IEEE · 27 ott
+            2021</p>
+        </div>
+        <a href="https://ieeexplore.ieee.org/document/9574046" class="w3-button w3-teal w3-round-large">View
+          Publication</a>
+      </div>
+
+      <!-- Parallax Section -->
+      <div class="bgimg-4 w3-display-container w3-opacity-min">
+      </div>
 
       <!-- Education Section -->
       <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="education">
-          <h2 class="w3-text-grey w3-animate-left">Education</h2>
-          <hr class="w3-opacity">
-          <div class="w3-padding-small">
-              <div class="w3-card-4 w3-round w3-padding w3-margin-bottom" style="position: relative;">
-                <!-- div class="w3-circle w3-display-container" style="background-color: white; width: 60px; height: 60px; position: absolute; top: -30px; right: -30px; box-shadow: 0px 0px 10px rgba(0,0,0,0.3);">
+        <h2 class="w3-text-grey w3-animate-left">Education</h2>
+        <hr class="w3-opacity">
+        <div class="w3-padding-small">
+          <div class="w3-card-4 w3-round w3-padding w3-margin-bottom" style="position: relative;">
+            <!-- div class="w3-circle w3-display-container" style="background-color: white; width: 60px; height: 60px; position: absolute; top: -30px; right: -30px; box-shadow: 0px 0px 10px rgba(0,0,0,0.3);">
                   <img src="/images/university_logo.png" alt="university_logo" style="width: 100%; height: 100%; border-radius: 50%;">
                 </div -->
-                <h4 class="w3-text-teal">Master's degree in Computer Engineering, System and Applications (in English)</h4>
-                <p class="w3-text-grey">The University of Salerno</p>
-                <p class="w3-text-grey"><i>2018 - 2021</i></p>
-                <p class="w3-text-grey">
-                  <strong>Thesis: </strong><i>Intelligent system for monitoring and detecting critical situations on the state of vegetation in forest/agricultural contexts</i></p>
-                  <p class="w3-text-grey"><strong>Skills: </strong>Python, Earth Observation, Apache Kafka, Machine Leaning, Semantic Web</p>
-                  <br>
-                  <p class="w3-text-grey"><strong>Main projects:</strong></p>
-                  <ul class="w3-text-grey">
-                  <li>Telecommunication Networks: Packet manipulation with error correction
-                      <button onclick="toggleDescription('description1', 'arrow-icon1')" class="w3-button" style="border: none; background: none; padding: 0; margin-left: 10px;" title="Show details"><i id="arrow-icon1" class="fa fa-chevron-down" style="font-size: 14px; color: inherit;"></i></button>
-                      <div id="description1" style="display: none; font-size: 12px;">
-                      <p>The project aims to evaluate the effectiveness of packet manipulation attacks in which an attacker artificially modifies the fields of an IP packet. The retransmission protocol considered is the ARQ stop and wait protocol in full duplex mode and, in particular, in piggyback configuration and three correction mechanisms have been examined: parity bit, parity matrix, standard CRC.</p>
-                      </div>
-                  </li>
-                  <li>Cognitive Robotics: Competition
-                      <button onclick="toggleDescription('description2', 'arrow-icon2')" class="w3-button" style="border: none; background: none; padding: 0; margin-left: 10px;" title="Show details"><i id="arrow-icon2" class="fa fa-chevron-down" style="font-size: 14px; color: inherit;"></i></button>
-                      <div id="description2" style="display: none; font-size: 12px;">
-                      <p>Realization of a software to automatically move a robot inside a simulated football field (ROS, Gazebo). The robot must:</p>
-                      <ul>
-                          <li>Move independently.</li>
-                          <li>Identify the presence and position of the soccer ball (MobileNetSSDv2 object detector and detection by tracking).</li>
-                          <li>Identify the presence and position of the football goal.</li>
-                          <li>Identify the presence and position of obstacles (which can obstruct the ball).</li>
-                          <li>Move the ball into the goal while avoiding obstacles.</li>
-                      </ul>
-                      </div>
-                  </li>
-                  <li>Artificial Vision: License Plate Detection and Recognition
-                      <button onclick="toggleDescription('description3', 'arrow-icon3')" class="w3-button" style="border: none; background: none; padding: 0; margin-left: 10px;" title="Show details"><i id="arrow-icon3" class="fa fa-chevron-down" style="font-size: 14px; color: inherit;"></i></button>
-                      <div id="description3" style="display: none; font-size: 12px;">
-                      <p>The aim of the project is to create an automatic system capable in the first instance of detecting the presence of license plates (buses, cars, mopeds, etc.) in different scenarios (in the wild, for example rain, snow, different angles and rotations, etc.), and subsequently recognize the characters that constitute them. System design:</p>
-                      <ul>
-                          <li>A subsystem responsible for detection (YOLOv3).</li>
-                          <li>A subsystem that deals with image rectification (Xception).</li>
-                          <li>A subsystem, Optical Character Recognition, which deals with the recognition of the characters present in the plate (pre-processing and CRNN).</li>
-                      </ul>
-                      </div>
-                  </li>
-                  <li>Cybersecurity: Fake Contact Avoidance on a Decentralized Privacy-Preserving Contact Tracing System (DP3T) (COVID-19)
-                      <button onclick="toggleDescription('description4', 'arrow-icon4')" class="w3-button" style="border: none; background: none; padding: 0; margin-left: 10px;" title="Show details"><i id="arrow-icon4" class="fa fa-chevron-down" style="font-size: 14px; color: inherit;"></i></button>
-                      <div id="description4" style="display: none; font-size: 12px;">
-                      <p>Realization of a security scheme for the DP3T tracking system capable of avoiding the possibility of an adversary reporting false contacts between the users of the application (replay attack). The objectives of the project is to prevent the malicious user from communicating false contacts between citizens: to prevent the opponent from disclosing one or more ephemeral codes of others, saved on their device, to the citizen with whom they will come into contact.</p>
-                      </div>
-                  </li>
+            <h4 class="w3-text-teal">Master's degree in Computer Engineering, System and Applications (in English)</h4>
+            <p class="w3-text-grey">The University of Salerno</p>
+            <p class="w3-text-grey"><i>2018 - 2021</i></p>
+            <p class="w3-text-grey">
+              <strong>Thesis: </strong><i>Intelligent system for monitoring and detecting critical situations on the
+                state of vegetation in forest/agricultural contexts</i>
+            </p>
+            <p class="w3-text-grey"><strong>Skills: </strong>Python, Earth Observation, Apache Kafka, Machine Leaning,
+              Semantic Web</p>
+            <br>
+            <p class="w3-text-grey"><strong>Main projects:</strong></p>
+            <ul class="w3-text-grey">
+              <li>Telecommunication Networks: Packet manipulation with error correction
+                <button onclick="toggleDescription('description1', 'arrow-icon1')" class="w3-button"
+                  style="border: none; background: none; padding: 0; margin-left: 10px;" title="Show details"><i
+                    id="arrow-icon1" class="fa fa-chevron-down" style="font-size: 14px; color: inherit;"></i></button>
+                <div id="description1" style="display: none; font-size: 12px;">
+                  <p>The project aims to evaluate the effectiveness of packet manipulation attacks in which an attacker
+                    artificially modifies the fields of an IP packet. The retransmission protocol considered is the ARQ
+                    stop and wait protocol in full duplex mode and, in particular, in piggyback configuration and three
+                    correction mechanisms have been examined: parity bit, parity matrix, standard CRC.</p>
+                </div>
+              </li>
+              <li>Cognitive Robotics: Competition
+                <button onclick="toggleDescription('description2', 'arrow-icon2')" class="w3-button"
+                  style="border: none; background: none; padding: 0; margin-left: 10px;" title="Show details"><i
+                    id="arrow-icon2" class="fa fa-chevron-down" style="font-size: 14px; color: inherit;"></i></button>
+                <div id="description2" style="display: none; font-size: 12px;">
+                  <p>Realization of a software to automatically move a robot inside a simulated football field (ROS,
+                    Gazebo). The robot must:</p>
+                  <ul>
+                    <li>Move independently.</li>
+                    <li>Identify the presence and position of the soccer ball (MobileNetSSDv2 object detector and
+                      detection by tracking).</li>
+                    <li>Identify the presence and position of the football goal.</li>
+                    <li>Identify the presence and position of obstacles (which can obstruct the ball).</li>
+                    <li>Move the ball into the goal while avoiding obstacles.</li>
                   </ul>
+                </div>
+              </li>
+              <li>Artificial Vision: License Plate Detection and Recognition
+                <button onclick="toggleDescription('description3', 'arrow-icon3')" class="w3-button"
+                  style="border: none; background: none; padding: 0; margin-left: 10px;" title="Show details"><i
+                    id="arrow-icon3" class="fa fa-chevron-down" style="font-size: 14px; color: inherit;"></i></button>
+                <div id="description3" style="display: none; font-size: 12px;">
+                  <p>The aim of the project is to create an automatic system capable in the first instance of detecting
+                    the presence of license plates (buses, cars, mopeds, etc.) in different scenarios (in the wild, for
+                    example rain, snow, different angles and rotations, etc.), and subsequently recognize the characters
+                    that constitute them. System design:</p>
+                  <ul>
+                    <li>A subsystem responsible for detection (YOLOv3).</li>
+                    <li>A subsystem that deals with image rectification (Xception).</li>
+                    <li>A subsystem, Optical Character Recognition, which deals with the recognition of the characters
+                      present in the plate (pre-processing and CRNN).</li>
+                  </ul>
+                </div>
+              </li>
+              <li>Cybersecurity: Fake Contact Avoidance on a Decentralized Privacy-Preserving Contact Tracing System
+                (DP3T) (COVID-19)
+                <button onclick="toggleDescription('description4', 'arrow-icon4')" class="w3-button"
+                  style="border: none; background: none; padding: 0; margin-left: 10px;" title="Show details"><i
+                    id="arrow-icon4" class="fa fa-chevron-down" style="font-size: 14px; color: inherit;"></i></button>
+                <div id="description4" style="display: none; font-size: 12px;">
+                  <p>Realization of a security scheme for the DP3T tracking system capable of avoiding the possibility
+                    of an adversary reporting false contacts between the users of the application (replay attack). The
+                    objectives of the project is to prevent the malicious user from communicating false contacts between
+                    citizens: to prevent the opponent from disclosing one or more ephemeral codes of others, saved on
+                    their device, to the citizen with whom they will come into contact.</p>
+                </div>
+              </li>
+            </ul>
 
-                  <button onclick="toggleAllDescriptions()" class="w3-button w3-teal w3-margin-top w3-round" id="toggle-all-button">Show all details</button>
-
-                  <script>
-                  function toggleDescription(descriptionId, arrowIconId) {
-                      var x = document.getElementById(descriptionId);
-                      var arrow = document.getElementById(arrowIconId);
-                      if (x.style.display === "none") {
-                      x.style.display = "block";
-                      arrow.classList.remove("fa-chevron-down");
-                      arrow.classList.add("fa-chevron-up");
-                      } else {
-                      x.style.display = "none";
-                      arrow.classList.remove("fa-chevron-up");
-                      arrow.classList.add("fa-chevron-down");
-                      }
-                  }
-  
-                    
-                  function toggleAllDescriptions() {
-                      var descriptions = document.querySelectorAll('[id^="description"]');
-                      var arrows = document.querySelectorAll('[id^="arrow-icon"]');
-                      var button = document.getElementById("toggle-all-button");
-                      if (button.innerHTML === "Show all details") {
-                      descriptions.forEach(function(description) {
-                          description.style.display = "block";
-                      });
-                      arrows.forEach(function(arrow) {
-                          arrow.classList.remove("fa-chevron-down");
-                          arrow.classList.add("fa-chevron-up");
-                      });
-                      button.innerHTML = "Collapse all";
-                      } else {
-                      descriptions.forEach(function(description) {
-                          description.style.display = "none";
-                      });
-                      arrows.forEach(function(arrow) {
-                          arrow.classList.remove("fa-chevron-up");
-                          arrow.classList.add("fa-chevron-down");
-                      });
-                      button.innerHTML = "Show all details";
-                      }
-                  }
-                  </script>
-              </div>
-            </div>
-          <div class="w3-padding-small">
-            <div class="w3-card-4 w3-round w3-padding w3-margin-bottom" style="position: relative;">
-              <!-- div class="w3-circle w3-display-container" style="background-color: white; width: 60px; height: 60px; position: absolute; top: -30px; right: -30px; box-shadow: 0px 0px 10px rgba(0,0,0,0.3);">
-                <img src="/images/university_logo.png" alt="university_logo" style="width: 100%; height: 100%; border-radius: 50%;">
-              </div -->
-              <h4 class="w3-text-teal">Bachelor's degree in Computer Engineering</h4>
-              <p class="w3-text-grey"><i>2014 - 2018</i></p>
-              <p class="w3-text-grey">
-                <strong>Thesis: </strong><i>Design and implementation of a responsive Web App for real-time feedback collection</i></p>
-                <p class="w3-text-grey"><strong>Skills: </strong>Web Languages</p>
-            </div>
+            <button onclick="toggleAllDescriptions()" class="w3-button w3-teal w3-margin-top w3-round"
+              id="toggle-all-button">Show all details</button>
           </div>
         </div>
+        <div class="w3-padding-small">
+          <div class="w3-card-4 w3-round w3-padding w3-margin-bottom" style="position: relative;">
+            <!-- div class="w3-circle w3-display-container" style="background-color: white; width: 60px; height: 60px; position: absolute; top: -30px; right: -30px; box-shadow: 0px 0px 10px rgba(0,0,0,0.3);">
+                <img src="/images/university_logo.png" alt="university_logo" style="width: 100%; height: 100%; border-radius: 50%;">
+              </div -->
+            <h4 class="w3-text-teal">Bachelor's degree in Computer Engineering</h4>
+            <p class="w3-text-grey"><i>2014 - 2018</i></p>
+            <p class="w3-text-grey">
+              <strong>Thesis: </strong><i>Design and implementation of a responsive Web App for real-time feedback
+                collection</i>
+            </p>
+            <p class="w3-text-grey"><strong>Skills: </strong>Web Languages</p>
+          </div>
+        </div>
+      </div>
 
-        <!-- Parallax Section -->
-  <div class="bgimg-4 w3-display-container w3-opacity-min">
-  </div>
+      <!-- Parallax Section -->
+      <div class="bgimg-4 w3-display-container w3-opacity-min">
+      </div>
 
-    <!-- Contact Section -->
-  <div class="w3-padding-32 w3-content w3-text-grey" id="contact" style="margin-bottom:64px">
-      <h2>Contact</h2>
-      <hr class="w3-opacity">
+      <!-- Contact Section -->
+      <div class="w3-padding-32 w3-content w3-text-grey" id="contact" style="margin-bottom:64px">
+        <h2>Contact</h2>
+        <hr class="w3-opacity">
 
-      <div class="w3-row">
+        <div class="w3-row">
           <div class="w3-col l6 m12">
-              <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right icon-teal"></i>
-                  Santa Paolina, Avellino, IT
-              </p>
-              <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right  icon-teal"></i>
-                  <a href="tel:+393469554008">(+39) 3469554008</a>
-              </p>
-              <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right icon-teal"></i>
-                  <a href="mailto:valerioserino.info@gmail.com">valerioserino.info@gmail.com</a>
-              </p>
-              <p><i class="fa fa-linkedin fa-fw w3-xxlarge w3-margin-right icon-teal"></i>
-                  <a href="https://www.linkedin.com/in/tuo-nome-profilo" target="_blank">Valerio Serino</a>
-              </p>
+            <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right icon-teal"></i>
+              Santa Paolina, Avellino, IT
+            </p>
+            <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right  icon-teal"></i>
+              <a href="tel:+393469554008">(+39) 3469554008</a>
+            </p>
+            <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right icon-teal"></i>
+              <a href="mailto:valerioserino.info@gmail.com">valerioserino.info@gmail.com</a>
+            </p>
+            <p><i class="fa fa-linkedin fa-fw w3-xxlarge w3-margin-right icon-teal"></i>
+              <a href="https://www.linkedin.com/in/valerioserino/" target="_blank">Valerio Serino</a>
+            </p>
           </div>
           <div class="w3-col l6 m12 w3-padding-16">
-              <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24140.89643146276!2d14.788828214494392!3d41.03790484506267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b598cfe2b083b%3A0x5c8f5f62116576c1!2sSanta%20Paolina%2C%20Avellino%2C%20Italy!5e0!3m2!1sen!2sit!4v1616470855923!5m2!1sen!2sit"
-                  width="100%"
-                  height="280"
-                  style="border:0;"
-                  allowfullscreen=""
-                  loading="lazy">
-              </iframe>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24140.89643146276!2d14.788828214494392!3d41.03790484506267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b598cfe2b083b%3A0x5c8f5f62116576c1!2sSanta%20Paolina%2C%20Avellino%2C%20Italy!5e0!3m2!1sen!2sit!4v1616470855923!5m2!1sen!2sit"
+              width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
           </div>
+        </div>
       </div>
-  </div>
-    
-    <!-- Footer -->
-  <div class="footer w3-container w3-padding-16 w3-center w3-opacity" style="margin:-50px;">
-      <div>
-          <p class="w3-text-grey">Built from scratch by <strong>Valerio Serino</strong></p>
-      </div>
-      <div>
-          <a href="#top" title="Torna all'inizio">
-              <i class="fa fa-arrow-up w3-hover-opacity" style="margin-top: 8px;"></i>
-          </a>
-      </div>
-    </div> 
-  <!-- END PAGE CONTENT -->
-</div>
 
-  <script>
-    function openNav() {
-      document.getElementById("mySidebar").style.display = "block";
-      document.body.classList.add("no-scroll"); // Blocca lo scroll
-    }
-    function closeNav() {
-      document.getElementById("mySidebar").style.display = "none"; // Nasconde il menu
-      document.body.classList.remove("no-scroll"); // Riabilita lo scroll
-    }
-  </script>
+      <!-- Footer -->
+      <div class="footer w3-container w3-padding-16 w3-center w3-opacity" style="margin:-50px;">
+        <div>
+          <p class="w3-text-grey">Built from scratch by <strong>Valerio Serino</strong></p>
+        </div>
+        <div>
+          <a href="#top" title="Go to home">
+            <i class="fa fa-arrow-up w3-hover-opacity" style="font-size: 36px; margin-top: 4px;"></i>
+          </a>
+        </div>
+      </div>
+      <!-- END PAGE CONTENT -->
+    </div>
+    <script src="script.js"></script>
 </body>
+
 </html>
