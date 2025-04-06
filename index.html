@@ -35,13 +35,13 @@
     </div>
   </nav>
 
-  <span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black"
+  <span class="w3-button w3-top w3-white w3-xlarge w3-text-grey w3-hover-text-black"
     style="width:auto;left:0;background-color: transparent !important" onclick="toggleDarkMode()">
     <i class="fa fa-moon-o"></i>
   </span>
 
   <!-- Menu icon to open sidebar -->
-  <span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black"
+  <span class="w3-button w3-top w3-white w3-xlarge w3-text-grey w3-hover-text-black"
     style="width:auto;right:0;background-color: transparent !important" onclick="openNav()">
     <i class="fa fa-bars"></i>
   </span>
@@ -396,10 +396,10 @@
                 </li>
               </ul>
 
-              <button onclick="toggleAllDescriptions()" class="w3-button w3-margin-top w3-round" id="toggle-all-button"
+              <a onclick="toggleAllDescriptions()" class="w3-button w3-round-large" id="toggle-all-button"
                 style="background-color: #005f56; color: #ffffff;">
                 Show all details
-              </button>
+              </a>
           </div>
         </div>
         <div class="w3-padding-small">
@@ -452,16 +452,22 @@
       </div>
 
       <!-- Footer -->
-      <div class="footer w3-container w3-padding-16 w3-center w3-opacity" style="margin:-50px;">
-        <div>
-          <p class="w3-text-grey">Built from scratch by <strong>Valerio Serino</strong></p>
+      <footer class="w3-center w3-opacity-min">
+        <div class="w3-animate-opacity">
+          <p class="w3-large w3-text-grey" style="margin: 4px 0;">
+            Built from scratch by <strong>Valerio Serino</strong>
+          </p>
+          <p class="w3-text-grey w3-small" style="margin: 4px 0;">
+            In compliance with <strong>WCAG 2.2</strong> and <strong>Worldwide Accessibility Standards</strong>
+          </p>
+
+          <div class="w3-margin-top" style="margin-top: 8px;">
+            <a href="#top" title="Go to top" class="w3-hover-opacity">
+              <i class="fa fa-arrow-up" style="font-size: 36px;"></i>
+            </a>
+          </div>
         </div>
-        <div>
-          <a href="#top" title="Go to home">
-            <i class="fa fa-arrow-up w3-hover-opacity" style="font-size: 36px; margin-top: 4px;"></i>
-          </a>
-        </div>
-      </div>
+      </footer>
       <!-- END PAGE CONTENT -->
     </div>
     <script src="script.js"></script>
