@@ -184,10 +184,10 @@ renderer.setSize(container.clientWidth, container.clientHeight);
 container.appendChild(renderer.domElement);
 
 // Parametri del cubo
-const cubeSize = 2.6;
+const cubeSize = 2.8;
 const geometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
-const bitColor0 = '#ffffff';
-const bitColor1 = '#ffffff';
+const bitColor0 = '#008080';
+const bitColor1 = '#008080';
 const materials = [];
 
 // Creazione dei materiali con maggiore luminosità
@@ -196,8 +196,7 @@ for (let i = 0; i < 6; i++) {
     canvas.width = 256;
     canvas.height = 256;
     const ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.font = '20px Courier';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
